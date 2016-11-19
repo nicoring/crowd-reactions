@@ -50,3 +50,7 @@ build
 .DS_Store
 .env
 npm-debug.log
+
+# Custom
+.vscode
+
