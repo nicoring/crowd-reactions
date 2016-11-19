@@ -6,8 +6,10 @@
     "react-scripts": "0.7.0"
   },
   "dependencies": {
+    "highcharts": "^5.0.3",
     "react": "^15.4.0",
-    "react-dom": "^15.4.0"
+    "react-dom": "^15.4.0",
+    "react-highcharts": "^11.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
