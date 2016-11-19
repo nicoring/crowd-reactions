@@ -7,9 +7,9 @@ app = Flask(__name__)
 api = Api(app)
 
 api.add_resource(advertisements.AdvertisementList, '/advertisements')
-api.add_resource(advertisements.Advertisement, '/advertisements/<ad_id>')
+api.add_resource(advertisements.AdvertisementRes, '/advertisements/<ad_id>')
 api.add_resource(reactions.AdReactionList, '/advertisements/<ad_id>/reactions')
 api.add_resource(reactions.AdReaction, '/advertisements/<ad_id>/reactions/<reaction_id>')
 
 if __name__ == '__main__':
-  app.run(debug=True)
+  app.run(debug=True, use_debugger=True)
