@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
-const API_URL = 'http://localhost:5000'
+// const API_URL = 'http://localhost:5000'
+const API_URL = 'https://crowd-reactions.herokuapp.com:5000'
 
 // Similar to:
 // http://stackoverflow.com/questions/29473426/fetch-reject-promise-with-json-error-object
