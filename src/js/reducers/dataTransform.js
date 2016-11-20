@@ -5,7 +5,10 @@ export default (data) => {
   graphs.push(emoDev)
 
   var genderDist = extractGender(data.data)
+  graphs.push(genderDist)
   console.log(genderDist)
+
+  graphs.push(extractPeople(data.data))
 
   return graphs
 }
@@ -15,23 +18,40 @@ function extractGender(data){
       if(timeframe.faces.length == 0)
         return timeframe.faces
       let aggGender = timeframe.faces.reduce( (prev, curr) => {
-          console.log(prev.gender, curr.gender)
+          // console.log(prev.gender, curr.gender)
           if(typeof prev.gender == "string")
             prev.gender = [prev.gender]
           var sex = prev.gender
           sex.push(curr.gender)
           return {gender: sex}
       })
-      // console.log(aggGender)
+      if(typeof aggGender.gender == "string"){
+        aggGender = {
+          gender: [aggGender.gender]
+        }
+      }
       return aggGender
   })
-  // console.log(gender)
+  gender = gender.reduce( (prev, curr) => {
+    return {
+      gender: prev.gender.concat(curr.gender)
+    }
+  })
+  var maleCount = 0;
+  var femaleCount = 0;
+
+  for(var i=0; i<gender.gender.length; i++){
+    if(gender.gender[i] == "male")
+      maleCount++
+    else
+      femaleCount++
+  }
   return {
     type: 'pie',
     title: 'Gender Distribution',
     data: [
-      ['male', gender.male],
-      ['female', gender.female],
+      ['male', maleCount, 'blue'],
+      ['female', femaleCount, 'red'],
     ]
   }
 }
@@ -44,7 +64,7 @@ function extractEmotions(data){
           var emo = {}
           for(var key in prev){
             if(prev[key] && curr[key])
-              emo[key] = prev[key] + curr[key]
+              emo[key] = prev[key] / timeframe.count + curr[key] / timeframe.count
           }
           return emo
         })
@@ -72,8 +92,88 @@ function extractEmotions(data){
     data: Object.keys(ems).map( key => {
       return {
         name: key,
-        data: ems[key],
+        data: combineTimeValue( extracTimestamps(data), ems[key]),
       }
-    })
+    }),
+    // timeSeries: extracTimestamps(data)
+  }
+}
+
+
+function extractPeople(data){
+  let people = data.map( (timeframe) => {
+    return timeframe.count
+  })
+
+  return {
+    type: 'line',
+    title: 'Number of People',
+    data: [{
+        name: "peopleCount",
+        data: people,
+      }
+    ]
+  }
+}
+
+function combineTimeValue(timestamps, values){
+  let comb = []
+  for(var i=0; i<timestamps.length; i++){
+    comb.push(timestamps[i], values[i])
+  }
+  return comb
+}
+
+function extracTimestamps(data){
+  let timestamps = data.map( (timeframe) => {
+    return parseInt(timeframe.timestamp)
+  })
+
+  return timestamps
+}
+
+function extractGender(data){
+  let ages = {
+
+  }
+  let gender = data.map( (timeframe) => {
+      if(timeframe.faces.length == 0)
+        return timeframe.faces
+      let aggGender = timeframe.faces.reduce( (prev, curr) => {
+          // console.log(prev.gender, curr.gender)
+          if(typeof prev.gender == "string")
+            prev.gender = [prev.gender]
+          var sex = prev.gender
+          sex.push(curr.gender)
+          return {gender: sex}
+      })
+      if(typeof aggGender.gender == "string"){
+        aggGender = {
+          gender: [aggGender.gender]
+        }
+      }
+      return aggGender
+  })
+  gender = gender.reduce( (prev, curr) => {
+    return {
+      gender: prev.gender.concat(curr.gender)
+    }
+  })
+  var maleCount = 0;
+  var femaleCount = 0;
+
+  for(var i=0; i<gender.gender.length; i++){
+    if(gender.gender[i] == "male")
+      maleCount++
+    else
+      femaleCount++
+  }
+  return {
+    type: 'pie',
+    title: 'Gender Distribution',
+    data: [
+      ['male', maleCount],
+      ['female', femaleCount],
+    ]
   }
 }

@@ -37,7 +37,8 @@ class LineChart extends Component {
         data: this.props.data.map( dataRow => ({
           name: dataRow[0],
           y: dataRow[1],
-          sliced: true
+          sliced: true,
+          color: dataRow[2] ? dataRow[2] : ''
         }))
       }]
     };
