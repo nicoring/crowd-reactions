@@ -15,4 +15,4 @@ api.add_resource(reactions.AdReactionList, '/ads')
 api.add_resource(reactions.AdReaction, '/ads/<ad_id>')
 
 if __name__ == '__main__':
-  app.run(debug=True, use_debugger=True)
+  app.run(debug=True, use_debugger=True, port=5000)
