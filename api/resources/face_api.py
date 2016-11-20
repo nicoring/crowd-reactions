@@ -44,14 +44,15 @@ class FaceApi:
         return
 
     def process_images(self, path):
-        dirs = [f for f in os.listdir(path) if os.path.isdir(f)].sort()
+        dirs = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
+        dirs.sort()
         for d in dirs:
             emotions = []
             faces = []
             timestamp = d.split('/')[-1].split('_')[-1]
             for f in os.listdir(os.path.join(path, d)):
                 if not f.startswith('.'):
-                    image = open(f, 'rb').read()
+                    image = open(os.path.join(path, d, f), 'rb').read()
                     faces += list(self.face_data(image))
                     emotions += list(self.face_emotion(image))
             yield {
@@ -62,7 +63,7 @@ class FaceApi:
             }
 
 if __name__ == "__main__":
-    path = '../../scripts/faces/'
+    path = '../../frames/faces/'
 
     fa = FaceApi()
 
