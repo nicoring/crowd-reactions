@@ -52,7 +52,7 @@ class FaceApi:
 
 if __name__ == "__main__":
     path = '../../scripts/faces/'
-    filenames = [path + f for f in os.listdir(path) if not f.startswith('.') ]
+    filenames = [path + f for f in os.listdir(path) if not f.startswith('.')]
     fa = FaceApi()
 
     out = open('face.out.json', 'w')
