@@ -5,7 +5,19 @@
       "timestamp": 1,
       "count": 1,
       "faces": [{"gender": "male", "smile": 0.002, "age": 26.1, "facialHair": {"sideburns": 0.0, "beard": 0.2, "moustache": 0.1}, "glasses": "NoGlasses"}],
-      "emotions": [{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263}]
+      "emotions": [{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263},{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263},{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263},{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263}]
+    },
+    {
+      "timestamp": 1,
+      "count": 1,
+      "faces": [{"gender": "male", "smile": 0.002, "age": 26.1, "facialHair": {"sideburns": 0.0, "beard": 0.2, "moustache": 0.1}, "glasses": "NoGlasses"}],
+      "emotions": [{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263},{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263},{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263}]
+    },
+    {
+      "timestamp": 1,
+      "count": 1,
+      "faces": [{"gender": "male", "smile": 0.002, "age": 26.1, "facialHair": {"sideburns": 0.0, "beard": 0.2, "moustache": 0.1}, "glasses": "NoGlasses"}],
+      "emotions": [{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263},{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263},{"sadness": 0.01851483, "surprise": 0.0009901815, "disgust": 0.000921650557, "contempt": 0.00117770559, "neutral": 0.976421654, "anger": 0.00123632408, "fear": 0.000277936255, "happiness": 0.000459709263}]
     }
   ]
 }

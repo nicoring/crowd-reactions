@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import {addGraph} from '../actions'
+import {addGraph, loadInfos} from '../actions'
 import Mock from './mockData.js'
 
 const TopBar = React.createClass({
@@ -10,16 +10,16 @@ const TopBar = React.createClass({
   },
 
   componentWillMount() {
-    var graphs = Mock.data()
-    graphs.map( graph => {
-      this.props.addGraph(graph)
-    })
+    // var graphs = Mock.data()
+    // graphs.map( graph => {
+    //   this.props.addGraph(graph)
+    // })
   },
 
   render() {
     return (
       <div className="top-bar">
-        <a className="top-btn" onClick={ _ => this.props.addGraph()}>
+        <a className="top-btn" onClick={ _ => this.props.load()}>
           Start
         </a>
       </div>
@@ -33,6 +33,9 @@ const mapStateToProps = (state, _ownProps) => ({
 const mapDispatchToProps = (dispatch, _ownProps) => ({
   addGraph: (graph) => {
     dispatch(addGraph(graph))
+  },
+  load: (graph) => {
+    dispatch(loadInfos())
   },
 })
 

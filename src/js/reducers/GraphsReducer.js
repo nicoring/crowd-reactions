@@ -1,3 +1,5 @@
+import handleApiData from './dataTransform.js'
+
 function graph(state = [], action) {
   switch (action.type) {
     case 'ADD_GRAPH':
@@ -5,11 +7,14 @@ function graph(state = [], action) {
         ...state,
         action.payload.graph,
       ]
-    case 'REMOVE_GRAPH':{
+    case 'REMOVE_GRAPH': {
       let newState = [...state]
       newState.splice(action.payload.index, 1)
       return newState
     }
+    case 'INFO_SUCCESS':
+      console.log("Succes :)", handleApiData(action.payload.data))
+      return handleApiData(action.payload.data)
     // case 'INCREASE_TIMER':
     //   return state.map( (timer, index) => handleTimer(timer, index, action ))
     default:
