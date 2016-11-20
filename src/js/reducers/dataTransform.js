@@ -10,10 +10,16 @@ export default (data) => {
 
 function extractGender(data){
   let gender = data.map( (timeframe) => {
-
-    return {
-
-    }
+    if(timeframe.faces.length == 0)
+      return timeframe.faces
+    let aggGender = timeframe.emotions.reduce( (prev, curr) => {
+          if(typeof prev.gender == "string")
+            prev.gender = [prev.gender]
+          var sex = prev.gender
+          sex.push(curr.gender)
+          return {gender: sex}
+        })
+    return aggGender
   })
 
   return {
@@ -28,6 +34,8 @@ function extractGender(data){
 
 function extractEmotions(data){
   let emotions = data.map( (timeframe) => {
+    if(timeframe.emotions.length == 0)
+      return timeframe.emotions
     let aggEmotions = timeframe.emotions.reduce( (prev, curr) => {
           var emo = {}
           for(var key in prev){
@@ -38,7 +46,7 @@ function extractEmotions(data){
         })
     return aggEmotions
   })
-  
+
   let ems = {}
   for(var i=0; i<emotions.length; i++){
     for(var emo in emotions[i]){
