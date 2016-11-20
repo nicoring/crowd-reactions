@@ -3,13 +3,12 @@ export default (data) => {
 
   var emoDev = extractEmotions(data.data)
   graphs.push(emoDev)
-
+  
   var genderDist = extractGender(data.data)
   graphs.push(genderDist)
-  console.log(genderDist)
+  graphs.push(extractAges(data.data))
 
   graphs.push(extractPeople(data.data))
-  graphs.push(extractAges(data.data))
 
   return graphs
 }
