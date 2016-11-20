@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
+import data from './data.js'
+
 // const API_URL = 'http://localhost:5000'
 const API_URL = 'https://crowd-reactions-api.herokuapp.com:5000'
 
@@ -35,9 +37,9 @@ function fetchJson(url, request) {
   )
 }
 
-export function fetchInformation(query) {
-  return fetchJson(`${API_URL}/ads/subway.json`)
-}
+// export function fetchInformation(query) {
+//   return fetchJson(`${API_URL}/ads/subway.json`)
+// }
 
 export function postExample(userID, password) {
   return fetchJson(`${API_URL}/login`, {
@@ -50,8 +52,8 @@ export function postExample(userID, password) {
 }
 
 
-export function demoApi(){
+export function fetchInformation(){
   return new Promise( (resolve, reject) => {
-
+    resolve(data)
   });
 }
