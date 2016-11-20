@@ -103,7 +103,7 @@ function extractEmotions(data){
 
 function extractPeople(data){
   let people = data.map( (timeframe) => {
-    return timeframe.count
+    return [parseFloat(timeframe.timestamp), timeframe.count]
   })
 
   return {
@@ -120,16 +120,15 @@ function extractPeople(data){
 function combineTimeValue(timestamps, values){
   let comb = []
   for(var i=0; i<timestamps.length; i++){
-    comb.push(timestamps[i], values[i])
+    comb.push([timestamps[i], values[i]])
   }
   return comb
 }
 
 function extracTimestamps(data){
   let timestamps = data.map( (timeframe) => {
-    return parseInt(timeframe.timestamp)
+    return parseFloat(timeframe.timestamp)
   })
-
   return timestamps
 }
 
