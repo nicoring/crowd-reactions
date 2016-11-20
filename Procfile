@@ -1,2 +1,1 @@
-front: node server.js
-api: cd api && python app.py
+web: node server.js && cd api && python app.py
