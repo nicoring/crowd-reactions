@@ -4,24 +4,28 @@ export default (data) => {
   var emoDev = extractEmotions(data.data)
   graphs.push(emoDev)
 
-  console.log(graphs)
+  var genderDist = extractGender(data.data)
+  console.log(genderDist)
+
   return graphs
 }
 
 function extractGender(data){
   let gender = data.map( (timeframe) => {
-    if(timeframe.faces.length == 0)
-      return timeframe.faces
-    let aggGender = timeframe.emotions.reduce( (prev, curr) => {
+      if(timeframe.faces.length == 0)
+        return timeframe.faces
+      let aggGender = timeframe.faces.reduce( (prev, curr) => {
+          console.log(prev.gender, curr.gender)
           if(typeof prev.gender == "string")
             prev.gender = [prev.gender]
           var sex = prev.gender
           sex.push(curr.gender)
           return {gender: sex}
-        })
-    return aggGender
+      })
+      // console.log(aggGender)
+      return aggGender
   })
-
+  // console.log(gender)
   return {
     type: 'pie',
     title: 'Gender Distribution',
