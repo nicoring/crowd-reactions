@@ -40,19 +40,27 @@ class FaceApi:
         for obj in res_json:
             yield obj['scores']
 
-    def process_images(self, filenames):
-        for filename in filenames:
-            image = open(filename, 'rb').read()
-            faces = self.face_data(image)
-            emotions = self.face_emotion(image)
+    def get_count(self, s):
+        return
+
+    def process_images(self, path):
+        dirs = [f for f in os.listdir(path) if os.path.isdir(f)].sort()
+        for d in dirs:
+            emotions = []
+            faces = []
+            for f in os.path.listdir(os.path.join(path, d)):
+                if not f.startswith('.'):
+                    image = open(filename, 'rb').read()
+                    faces += list(self.face_data(image))
+                    emotions += list(self.face_emotion(image))
             yield {
-                'emotions': list(emotions),
-                'faces': list(faces)
+                'emotions': emotions,
+                'faces': faces
             }
 
 if __name__ == "__main__":
     path = '../../scripts/faces/'
-    filenames = [path + f for f in os.listdir(path) if not f.startswith('.')]
+
     fa = FaceApi()
 
     out = open('face.out.json', 'w')
@@ -61,7 +69,7 @@ if __name__ == "__main__":
     # print(fa.face_data(image))
     # print(fa.face_emotion(image))
     # ['../../experiments/kopf.png', '../../experiments/kopf2.png']
-    result = list(fa.process_images(filenames))
+    result = list(fa.process_images(dirs))
 
     out.write(json.dumps(result))
     out.close()
