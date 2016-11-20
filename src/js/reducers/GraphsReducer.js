@@ -1,11 +1,11 @@
 function graph(state = [], action) {
   switch (action.type) {
-    case 'ADD_TIMER':
+    case 'ADD_GRAPH':
       return [
         ...state,
         action.payload.graph,
       ]
-    case 'REMOVE_TIMER':{
+    case 'REMOVE_GRAPH':{
       let newState = [...state]
       newState.splice(action.payload.index, 1)
       return newState

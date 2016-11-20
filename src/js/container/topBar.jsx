@@ -1,20 +1,25 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import {addTimer} from '../actions'
+import {addGraph} from '../actions'
+import Mock from './mockData.js'
 
 const TopBar = React.createClass({
   propTypes: {
-    addTimer: PropTypes.func.isRequired,
+    addGraph: PropTypes.func.isRequired,
   },
 
   componentWillMount() {
+    var graphs = Mock.data()
+    graphs.map( graph => {
+      this.props.addGraph(graph)
+    })
   },
 
   render() {
     return (
       <div className="top-bar">
-        <a className="top-btn" onClick={ _ => this.props.addTimer()}>
+        <a className="top-btn" onClick={ _ => this.props.addGraph()}>
           Start
         </a>
       </div>
@@ -26,10 +31,8 @@ const mapStateToProps = (state, _ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, _ownProps) => ({
-  addTimer: () => {
-    dispatch(addTimer({
-      count: 0
-    }))
+  addGraph: (graph) => {
+    dispatch(addGraph(graph))
   },
 })
 

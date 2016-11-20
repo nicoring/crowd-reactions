@@ -5,55 +5,43 @@ import LineChart from '../components/LineChart.js'
 
 const ContentLayout = React.createClass({
   propTypes: {
-    timer: PropTypes.array,
+    graphs: PropTypes.array,
   },
 
   componentWillMount(){
-    this.timeSeries = []
-    for(var i=0; i<163; i++){
-      this.timeSeries.push(i)
-    }
-    this.values = []
-    var val = []
-    for(var i=0; i<163; i++){
-      val.push(Math.random() * 200 + i)
-    }
+    console.log(this.props.graphs)
+  },
 
-     var val2 = []
-    for(var i=0; i<163; i++){
-      val2.push(Math.random() * 200 + i)
-    }
+  baseGraph(graph){
 
-    this.values.push({
-      data: val,
-      name: "some"})
-    this.values.push({
-      data: val2,
-      name: "someother"})
+    switch(graph.type){
+      case 'line':
+        return (
+          <LineChart
+            title={graph.title}
+            categories={graph.timeSeries}
+            data={graph.data}
+          />)
+      default:
+        return
+    }
   },
 
   render() {
     return (
       <div className="content">
-        <div className="graph">
-        <LineChart 
-          title="Some Title"
-          categories={this.timeSeries}
-          values={this.values}/>
-        </div>
-        <div className="graph">
-          <LineChart 
-            title="Some Title"
-            categories={this.timeSeries}
-            values={this.values}/>
-        </div>
+        {this.props.graphs.map( (graph, index) => (
+          <div className="graph" key={index}>
+            { this.baseGraph(graph)}        
+          </div>
+        ))}
       </div>
     )
   },
 })
 
 const mapStateToProps = (state, _ownProps) => ({
-  timer: state.timer
+  graphs: state.graphs
 })
 
 const mapDispatchToProps = (dispatch, _ownProps) => ({

@@ -26,7 +26,7 @@ class LineChart extends Component {
                 }
             }
         },
-      series: this.props.values
+      series: this.props.data
     };
 
     
@@ -42,7 +42,9 @@ class LineChart extends Component {
 
 LineChart.PropTypes = {
   title: PropTypes.string,
-  subtitle: PropTypes.string
+  subtitle: PropTypes.string,
+  categories: PropTypes.array.required,
+  data: PropTypes.array.required,
 }
 
 export default LineChart
