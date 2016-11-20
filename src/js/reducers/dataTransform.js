@@ -9,6 +9,7 @@ export default (data) => {
   console.log(genderDist)
 
   graphs.push(extractPeople(data.data))
+  graphs.push(extractAges(data.data))
 
   return graphs
 }
@@ -132,48 +133,39 @@ function extracTimestamps(data){
   return timestamps
 }
 
-function extractGender(data){
+function extractAges(data){
   let ages = {
-
+    "0-20": 0,
+    "20-30": 0,
+    "30-40": 0,
+    "40-50": 0,
+    ">50": 0
   }
   let gender = data.map( (timeframe) => {
       if(timeframe.faces.length == 0)
         return timeframe.faces
-      let aggGender = timeframe.faces.reduce( (prev, curr) => {
-          // console.log(prev.gender, curr.gender)
-          if(typeof prev.gender == "string")
-            prev.gender = [prev.gender]
-          var sex = prev.gender
-          sex.push(curr.gender)
-          return {gender: sex}
+      let aggGender = timeframe.faces.map( face => {
+          if(face.age < 20){
+            ages["0-20"]++
+          }else if(face.age < 30){
+            ages["20-30"]++
+          }else if(face.age < 40){
+            ages["30-40"]++
+          }else if(face.age < 50){
+            ages["40-50"]++
+          }else{
+            ages[">50"]++
+          }
       })
-      if(typeof aggGender.gender == "string"){
-        aggGender = {
-          gender: [aggGender.gender]
-        }
-      }
-      return aggGender
   })
-  gender = gender.reduce( (prev, curr) => {
-    return {
-      gender: prev.gender.concat(curr.gender)
-    }
-  })
-  var maleCount = 0;
-  var femaleCount = 0;
 
-  for(var i=0; i<gender.gender.length; i++){
-    if(gender.gender[i] == "male")
-      maleCount++
-    else
-      femaleCount++
-  }
+  var data = Object.keys(ages).map( key => {
+    return [key, ages[key]]
+  })
+
   return {
     type: 'pie',
-    title: 'Gender Distribution',
-    data: [
-      ['male', maleCount],
-      ['female', femaleCount],
-    ]
+    title: 'Age Distribution',
+    data: data
   }
 }
