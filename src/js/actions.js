@@ -4,3 +4,26 @@
 export const selectTool = tool => ({ type: 'SELECT_TOOL', payload: { tool } })
 export const addGraph = graph => ({type: 'ADD_GRAPH', payload: { graph } })
 export const increaseTimer = (index, interval) => ({type: 'INCREASE_TIMER', payload: { index, interval } })
+
+
+// TODO: Lock webapp until projects loaded
+const infoStart = () => ({ type: 'INFO_START' })
+// TODO: Throw an error in UI (alert)
+const infoError = message => ({ type: 'INFO_ERROR', error: true, payload: { message } })
+// Add projects to state and unlock webapp
+const infoSuccess = info => ({ type: 'INFO_SUCCESS', payload: { info } })
+
+export const loadProjects = () => ((dispatch) => {
+  // dispatch(infoStart())
+  // return api.fetchInformation()
+  //   .then(
+  //     r => dispatch(infoSuccess(r)),
+  //     e => dispatch(infoError(e))
+  //   )
+  dispatch(infoStart())
+  return api.fetchInformation()
+    .then(
+      r => dispatch(infoSuccess(r)),
+      e => dispatch(infoError(e))
+    )
+})

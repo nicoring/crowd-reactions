@@ -1,8 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-const API_URL = process.env.NODE_ENV === 'production'
-  ? 'https://template.com/api'
-  : 'http://localhost:3000/api'
+const API_URL = 'http://localhost:5000/api'
 
 // Similar to:
 // http://stackoverflow.com/questions/29473426/fetch-reject-promise-with-json-error-object
@@ -36,7 +34,7 @@ function fetchJson(url, request) {
   )
 }
 
-export function getExample(query) {
+export function fetchInformation(query) {
   return fetchJson(`${API_URL}/get/path?query=${query}`)
 }
 

@@ -18,33 +18,27 @@ export default {
     let graphs = [
       {
         type: 'line',
-        title: 'Line Graph',
+        title: 'Development of emotions',
         data: [
           {
             data: val,
-            name: "Value 1"
+            name: "Happiness"
           },
           {
             data: val2,
-            name: "Other Line Graph"
+            name: "Neutral"
           }
         ],
         timeSeries: timeSeries
       },
       {
-        type: 'line',
-        title: 'Line Graphasdf',
+        type: 'pie',
+        title: 'Age Distribution',
         data: [
-          {
-            data: val,
-            name: "Value 1"
-          },
-          {
-            data: val2,
-            name: "Other Line Graph"
-          }
-        ],
-        timeSeries: timeSeries
+          ['10-30', 0.20],
+          ['30-35', 0.50],
+          ['35-45', 0.25]
+        ]
       }
     ]
 
