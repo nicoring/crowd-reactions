@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import TopBar from './topBar'
-import ContentLayout from './ContentLayout'
+import ContentLayout from './contentLayout'
 
 require('../../styles/main.styl')
 require('../../images/favicon.png')
