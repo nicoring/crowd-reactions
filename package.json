@@ -56,7 +56,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",
-    "canvas": "^1.5.0",
     "enzyme": "^2.3.0",
     "eslint": "^2.11.1",
     "eslint-plugin-mocha": "^3.0.0",
