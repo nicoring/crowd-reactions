@@ -31,7 +31,7 @@ class FaceApi:
             yield obj['faceAttributes']
 
     def face_emotion(self, image):
-        r = requests.post(self.url_emotion,headers=self.headers('emotion'), data=image)
+        r = requests.post(self.url_emotion, headers=self.headers('emotion'), data=image)
         if r.status_code != 200:
             print(r.text)
             return
@@ -48,12 +48,15 @@ class FaceApi:
         for d in dirs:
             emotions = []
             faces = []
-            for f in os.path.listdir(os.path.join(path, d)):
+            timestamp = d.split('/')[-1].split('_')[-1]
+            for f in os.listdir(os.path.join(path, d)):
                 if not f.startswith('.'):
-                    image = open(filename, 'rb').read()
+                    image = open(f, 'rb').read()
                     faces += list(self.face_data(image))
                     emotions += list(self.face_emotion(image))
             yield {
+                'timestamp': timestamp,
+                'count': len(faces),
                 'emotions': emotions,
                 'faces': faces
             }
@@ -69,7 +72,12 @@ if __name__ == "__main__":
     # print(fa.face_data(image))
     # print(fa.face_emotion(image))
     # ['../../experiments/kopf.png', '../../experiments/kopf2.png']
-    result = list(fa.process_images(dirs))
+    result = list(fa.process_images(path))
 
-    out.write(json.dumps(result))
+    final_dict = {
+        "ad_id": 'subway',
+        "data": list(result)
+    }
+
+    out.write(json.dumps(final_dict))
     out.close()
