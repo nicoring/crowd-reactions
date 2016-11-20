@@ -39,7 +39,7 @@ if __name__ == '__main__':
         seconds = float(float(tick) / float(timescale))
         # print('{} -> {} , {}'.format(tick, seconds, get_seconds(seconds)))
         # subprocess.call(['ffmpeg', '-i', 'testvideo.mp4', '-vf', 'select=gte(n,{})'.format() -frames:v 1 frame.png'])
-        subprocess.call(['ffmpeg', '-i', video_file, '-ss', get_seconds(seconds), '-frames:v', '1', os.path.join(output, 'frame-{:04d}-{}-{:s}.jpg'.format(i, j, seconds))])
+        subprocess.call(['ffmpeg', '-i', video_file, '-ss', get_seconds(seconds), '-frames:v', '1', os.path.join(output, 'frame-{:04d}-{}-{:}.jpg'.format(i, j, seconds))])
         tick += interval
         j += 1
         break
