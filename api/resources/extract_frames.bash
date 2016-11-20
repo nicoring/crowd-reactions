@@ -1,3 +1,5 @@
+#! /bin/bash
+
 mkdir frames
 for second in $(cat list.txt)
 do
