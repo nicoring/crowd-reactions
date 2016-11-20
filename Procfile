@@ -1,1 +1,1 @@
-web: node server.js && cd api && python app.py
+web: node server.js && cd api && PORT=5000 python app.py
