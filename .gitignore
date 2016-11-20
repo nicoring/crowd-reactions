@@ -58,3 +58,8 @@ npm-debug.log
 
 # Python
 *.pyc
+
+scripts/faces
+scripts/videos
+scripts/frames_video1
+scripts/frames_halloween
