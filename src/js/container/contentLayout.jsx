@@ -13,6 +13,14 @@ const ContentLayout = React.createClass({
     console.log(this.props.graphs)
   },
 
+  componentWillReceiveProps(newProps){
+    // this.props.graphs = newProps.graphs
+  },
+
+  componentDidReceiveProps(newProps){
+    // this.props.graphs = newProps.graphs
+  },
+
   baseGraph(graph){
 
     switch(graph.type){

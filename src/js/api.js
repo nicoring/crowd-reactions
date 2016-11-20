@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-const API_URL = 'http://localhost:5000/api'
+const API_URL = 'http://localhost:5000'
 
 // Similar to:
 // http://stackoverflow.com/questions/29473426/fetch-reject-promise-with-json-error-object
@@ -35,7 +35,7 @@ function fetchJson(url, request) {
 }
 
 export function fetchInformation(query) {
-  return fetchJson(`${API_URL}/get/path?query=${query}`)
+  return fetchJson(`${API_URL}/ads/subway.json`)
 }
 
 export function postExample(userID, password) {
@@ -46,4 +46,11 @@ export function postExample(userID, password) {
       password,
     },
   })
+}
+
+
+export function demoApi(){
+  return new Promise( (resolve, reject) => {
+
+  });
 }
