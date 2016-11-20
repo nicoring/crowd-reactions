@@ -52,9 +52,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.2"
-  },
-  "devDependencies": {
+    "webpack": "^1.12.2",
     "babel-eslint": "^6.0.4",
     "enzyme": "^2.3.0",
     "eslint": "^2.11.1",
@@ -72,6 +70,9 @@
     "timekeeper": "^0.1.1",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.2.0"
+  },
+  "devDependencies": {
+
   },
   "babel": {
     "presets": [
